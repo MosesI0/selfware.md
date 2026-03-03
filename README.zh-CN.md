@@ -2,12 +2,16 @@
 
 语言： [English](README.md) | **中文** | [Italiano](README.it.md) | [日本語](README.ja.md) | [Français](README.fr.md) | [Deutsch](README.de.md)
 
-本仓库是 **Selfware Protocol** 的 demo 版本，提供中英文协议草案模板。
+本仓库是 **Selfware Protocol** 的 demo 版本，提供中英文协议草案模板与可运行的 `template.self` 工作区骨架。
 
 ## 当前内容
 
 - `template.self/selfware-zh.md`：协议草案（中文版）
 - `template.self/selfware.md`：协议草案（英文版）
+- `template.self/manifest.md`：实例清单与打包计划
+- `template.self/content/**`：规范数据范围与记忆文件
+- `template.self/runtime/server.py`：最小本地运行时
+- `template.self/entrypoint/**`：动作脚本、表单与提示词
 
 当前协议版本：`v0.1.0 (Draft)`
 
@@ -32,12 +36,17 @@ Selfware 旨在定义 Agent 时代的统一文件协议：
 
 1. 阅读中文协议：`template.self/selfware-zh.md`
 2. 阅读英文协议：`template.self/selfware.md`
-3. 基于模板创建你的实例协议文件，并按需扩展运行时模块（API、打包、协作、Memory、Discovery 等）。
+3. 通过 `template.self/entrypoint/scripts/run-app.ps1` 启动本地运行时。
+4. 基于模板创建你的实例协议文件，并按需扩展运行时模块（API、打包、协作、Memory、Discovery 等）。
 
 ## 仓库说明
 
-- 当前仓库仅包含协议模板文档。
-- 不包含完整 runtime/server 实现代码。
+- 当前仓库已包含最小可运行 runtime 与治理骨架。
+- 运行时实现刻意保持本地优先和最小化。
+
+## 相关项目
+
+- [IACT Protocol](https://github.com/floatboatai/iact) - 一种专为 AI Agent 设计的超轻量级行内交互协议，用于在自然语言对话中嵌入可点击的交互元素
 
 ## 许可证
 
