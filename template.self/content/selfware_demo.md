@@ -6,7 +6,7 @@ This file is the canonical demo payload for the runnable `template.self` instanc
 
 - You can edit this content from the local web view.
 - Save actions write only inside `content/`.
-- Each save should append a change record in `content/memory/changes.md`.
+- Each save should append a change record in `content/memory/data-changes.md`.
 
 ## Prompt Starter
 

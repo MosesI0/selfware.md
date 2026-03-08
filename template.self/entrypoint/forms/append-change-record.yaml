@@ -15,7 +15,7 @@ fields:
     type: text
     label: Paths CSV
     required: true
-    placeholder: content/selfware_demo.md,content/memory/changes.md
+    placeholder: content/selfware_demo.md,specs/memory.md
   - id: summary
     type: text
     label: Summary

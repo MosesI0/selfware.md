@@ -7,7 +7,7 @@ intent=""
 paths=()
 summary=""
 rollback_hint="manual"
-changes_file="content/memory/changes.md"
+changes_file=""
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -33,6 +33,28 @@ if [[ -z "$summary" ]]; then
 fi
 
 selfware_root="$(cd "$(dirname "$0")/../.." && pwd)"
+
+# Auto-detect log file based on paths if not explicitly set
+if [[ -z "$changes_file" ]]; then
+    is_data=false
+    is_software=false
+    for p in "${paths[@]}"; do
+        if [[ "$p" == content/* && "$p" != "content/memory/software-changes.md" ]]; then
+            is_data=true
+        else
+            is_software=true
+        fi
+    done
+    if $is_data && $is_software; then
+        # Mixed: caller should invoke twice; default to software
+        changes_file="content/memory/software-changes.md"
+        echo "Warning: mixed data+software paths. Writing to software log. Consider logging data changes separately." >&2
+    elif $is_data; then
+        changes_file="content/memory/data-changes.md"
+    else
+        changes_file="content/memory/software-changes.md"
+    fi
+fi
 
 if [[ "$changes_file" != /* ]]; then
     changes_file="$selfware_root/$changes_file"

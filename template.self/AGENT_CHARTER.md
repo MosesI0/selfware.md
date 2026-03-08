@@ -20,7 +20,7 @@ This file defines project-level principles that all agents MUST follow.
 ## 4. Auditability
 - Record meaningful decisions under `process/decisions/`.
 - Record run/task artifacts under `process/runs/` and `process/tasks/`.
-- Append Change Records to `content/memory/changes.md` for material changes.
+- Append Change Records to `content/memory/data-changes.md` (data) or `content/memory/software-changes.md` (software) per `specs/memory.md` §4.
 
 ## 5. Execution Quality
 - Prefer small, reversible changes with explicit rollback hints.

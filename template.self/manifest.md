@@ -58,4 +58,5 @@ No-Silent-Apply: required
 - runtime/capabilities.yaml
 - entrypoint/index.yaml
 - content/selfware_demo.md
-- content/memory/changes.md
+- content/memory/data-changes.md
+- content/memory/software-changes.md

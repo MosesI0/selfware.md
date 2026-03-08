@@ -1,27 +1,18 @@
-﻿---
+---
 selfware:
-  role: memory_changes
-  title: Change Records
-  purpose: Auditable change log for all writes in this instance.
-  scope: Canonical data, runtime actions, governance updates, and protocol updates.
+  role: memory_software_changes
+  title: Software Change Records
+  purpose: Auditable change log for selfware structure/logic iterations.
+  scope: Specs, runtime, governance, entrypoint, manifest, protocol, and process files.
   update_policy: append_only
   owner: team
   created_at: 2026-02-26T00:00:00Z
   updated_at: 2026-02-26T12:21:58Z
 ---
 
-# Change Records
+# Software Change Records
 
 Append one block per change. Do not rewrite history.
-
-## CHG-20260226-000001
-- timestamp: 2026-02-26T00:00:00Z
-- actor: template-bootstrap
-- intent: initialize_memory
-- paths:
-  - content/memory/changes.md
-- summary: Initialized append-only change record file.
-- rollback_hint: Restore this file from version control if needed.
 
 ## CHG-20260226-212433-1396
 - timestamp: 2026-02-26T11:24:33Z
@@ -58,4 +49,3 @@ Append one block per change. Do not rewrite history.
   - selfware-zh.md
 - summary: Added protocol section defining agent charter files and workspace conventions.
 - rollback_hint: Revert protocol files to the previous git commit.
-

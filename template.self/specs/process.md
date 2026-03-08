@@ -22,7 +22,8 @@ not only its data and logic, but also the history of *how* it evolved.
 | `process/tasks/` | Task records — goals, plans, acceptance criteria, status | One file per task |
 | `process/decisions/` | Decision records — context, options, rationale, consequences | One file per decision |
 | `process/runs/` | Run traces — execution logs and diagnostics | One file per run |
-| `content/memory/changes.md` | Append-only change audit log for all writes in this instance | Append only |
+| `content/memory/data-changes.md` | 数��变更日志 — 实例内容/数据的写入记�� | Append only |
+| `content/memory/software-changes.md` | 软件变更日志 — selfware 自身代码/规范的迭代记录 | Append only |
 
 ## 3. File Formats
 
@@ -34,12 +35,12 @@ user can understand the history without special tooling.
 
 ## 4. Change Audit
 
-Every significant write — whether to canonical data, runtime, governance,
-or process files themselves — MUST be recorded in `content/memory/changes.md`
-per the [Memory Specification](memory.md).
+Every significant write MUST be recorded per the [Memory Specification](memory.md):
 
-This creates a single, append-only timeline that ties tasks and decisions
-back to concrete file changes, enabling full traceability.
+- **数据变更**（`content/` 下）→ `content/memory/data-changes.md`
+- **软件变更**（specs、runtime、governance 等）→ `content/memory/software-changes.md`
+
+两条时间线共同提供完整的可追溯性，同时保持各自清晰可审计。
 
 ## 5. Relationship to Self-Containment
 

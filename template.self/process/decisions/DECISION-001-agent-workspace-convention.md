@@ -22,7 +22,7 @@
 ## Consequences
 - Positive:
   - Clear split between capability (`skills/`) and execution identity (`runtime/actors.yaml`).
-  - Better auditability via `process/decisions/` and `content/memory/changes.md`.
+  - Better auditability via `process/decisions/` and split change logs (`content/memory/data-changes.md`, `content/memory/software-changes.md`).
   - Client can render `entrypoint/index.yaml` as a stable human-agent interaction surface.
 - Negative:
   - Requires strict discipline on file-contract enforcement and change logging.

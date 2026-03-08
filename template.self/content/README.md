@@ -5,7 +5,8 @@ All source-of-truth instance data lives under this directory.
 ## Structure
 
 - `selfware_demo.md`: default editable content served by the runtime.
-- `memory/changes.md`: append-only change records.
+- `memory/data-changes.md`: append-only data change records.
+- `memory/software-changes.md`: append-only software change records.
 
 ## Rules
 

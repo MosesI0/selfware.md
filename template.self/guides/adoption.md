@@ -54,12 +54,12 @@
    ├── decisions/  # 决策记录
    └── runs/       # 运行日志
    ```
-2. 创建 `content/memory/changes.md`，格式参考 [specs/memory.md](../specs/memory.md)
+2. 创建 `content/memory/data-changes.md` 和 `content/memory/software-changes.md`，格式参考 [specs/memory.md](../specs/memory.md)
 3. （可选）从 git log 导入历史变更记录，参见 [历史迁移指南](import-history.md)
 
 **检查清单：**
 - [ ] `process/` 三个子目录已创建
-- [ ] `content/memory/changes.md` 存在且格式正确
+- [ ] `content/memory/data-changes.md` 和 `content/memory/software-changes.md` 存在且格式正确
 
 ---
 

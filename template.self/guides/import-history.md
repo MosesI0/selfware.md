@@ -23,14 +23,14 @@ git commit -m "feat: initialize selfware structure"
 
 ## 方案 B：压缩历史到 changes.md (Squash into Change Records)
 
-从 git log 提取关键 commit 写入 `content/memory/changes.md`，以全新 repo 开始。
+从 git log 提取关键 commit 写入 `content/memory/software-changes.md`，以全新 repo 开始。
 
 ```bash
 git log --oneline --no-merges > /tmp/history.txt   # 导出旧 commit 摘要
 mkdir my-instance && cd my-instance
 cp -r /path/to/template.self/* .
 git init && git add -A && git commit -m "init: selfware instance"
-# 然后将旧历史追加到 content/memory/changes.md（格式如下）
+# 然后将旧历史追加到 content/memory/software-changes.md（格式如下）
 ```
 
 Change Record 格式（遵循 [specs/memory.md](../specs/memory.md)）：
@@ -70,6 +70,6 @@ git commit -m "feat: initialize selfware with milestone records"
 
 ## 注意事项
 
-- 所有变更 MUST 记录到 `content/memory/changes.md`（[specs/memory.md](../specs/memory.md)）。
+- 所有变更 MUST 记录到 `content/memory/software-changes.md`（[specs/memory.md](../specs/memory.md)）。
 - 重要操作前 SHOULD 创建 rollback point（[specs/collaboration.md](../specs/collaboration.md)）。
 - 导��完成后建议运行 `verify-artifact` 确认实例完整性。

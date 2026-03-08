@@ -40,4 +40,5 @@ modules:
 policies:
   loopback_only: true
   no_silent_apply: true
-  change_record_file: content/memory/changes.md
+  data_change_record_file: content/memory/data-changes.md
+  software_change_record_file: content/memory/software-changes.md

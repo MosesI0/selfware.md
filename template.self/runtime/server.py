@@ -3,7 +3,7 @@
 
 This server intentionally keeps a narrow write boundary:
 - Canonical writes are limited to content/selfware_demo.md
-- Any write appends a change record entry under content/memory/changes.md
+- Any data write appends a change record to content/memory/data-changes.md
 """
 
 from __future__ import annotations
@@ -25,7 +25,8 @@ CONTENT_FILE = ROOT / "content" / "selfware_demo.md"
 MANIFEST_FILE = ROOT / "manifest.md"
 PROTOCOL_FILE = ROOT / "selfware.md"
 CAPABILITIES_FILE = ROOT / "runtime" / "capabilities.yaml"
-CHANGES_FILE = ROOT / "content" / "memory" / "changes.md"
+DATA_CHANGES_FILE = ROOT / "content" / "memory" / "data-changes.md"
+SOFTWARE_CHANGES_FILE = ROOT / "content" / "memory" / "software-changes.md"
 
 LOOPBACK_HOSTS = {"127.0.0.1", "localhost", "::1"}
 
@@ -43,9 +44,9 @@ def ensure_parent(path: pathlib.Path) -> None:
 
 
 def append_change_record(actor: str, intent: str, paths: list[str], summary: str, rollback_hint: str) -> str:
-    ensure_parent(CHANGES_FILE)
-    if not CHANGES_FILE.exists():
-        CHANGES_FILE.write_text("# Change Records\n\n", encoding="utf-8")
+    ensure_parent(DATA_CHANGES_FILE)
+    if not DATA_CHANGES_FILE.exists():
+        DATA_CHANGES_FILE.write_text("# Change Records\n\n", encoding="utf-8")
 
     change_id = f"CHG-{dt.datetime.now(dt.timezone.utc).strftime('%Y%m%d-%H%M%S')}-{random.randint(1000, 9999)}"
     lines = [
@@ -66,7 +67,7 @@ def append_change_record(actor: str, intent: str, paths: list[str], summary: str
         ]
     )
 
-    with CHANGES_FILE.open("a", encoding="utf-8", newline="\n") as fh:
+    with DATA_CHANGES_FILE.open("a", encoding="utf-8", newline="\n") as fh:
         fh.write("\n".join(lines))
 
     return change_id
@@ -296,7 +297,8 @@ def main() -> None:
     server = ThreadingHTTPServer((args.host, args.port), SelfwareHandler)
     print(f"Selfware runtime started: http://{args.host}:{args.port}")
     print("Write scope: content/**")
-    print("Change record: content/memory/changes.md")
+    print("Data change log: content/memory/data-changes.md")
+    print("Software change log: content/memory/software-changes.md")
 
     try:
         server.serve_forever()

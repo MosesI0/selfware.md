@@ -47,7 +47,7 @@ entries:
       posix: entrypoint/scripts/append-change-record.sh
     form: entrypoint/forms/append-change-record.yaml
     requires_confirmation: true
-    description: Append an auditable change record to content/memory/changes.md.
+    description: Append an auditable change record (auto-routes to data or software log).
   - id: check_update
     title: Check Update
     mode: action

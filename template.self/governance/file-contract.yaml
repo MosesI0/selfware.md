@@ -23,7 +23,8 @@ required_paths:
   - governance/file-contract.yaml
   - governance/trust-policy.yaml
   - runtime/capabilities.yaml
-  - content/memory/changes.md
+  - content/memory/data-changes.md
+  - content/memory/software-changes.md
 
 optional_paths:
   - skills/**
@@ -137,13 +138,21 @@ rules:
     agent_execute: deny
     notes: Protocol authority files should not be silently modified.
 
-  - glob: "content/memory/changes.md"
+  - glob: "content/memory/data-changes.md"
     required: true
     owner: shared
     agent_read: allow
     agent_write: allow
     agent_execute: deny
-    notes: Append-only change log for auditable writes.
+    notes: Append-only data change log (content/ scope).
+
+  - glob: "content/memory/software-changes.md"
+    required: true
+    owner: shared
+    agent_read: allow
+    agent_write: allow
+    agent_execute: deny
+    notes: Append-only software change log (specs/runtime/governance etc.).
 
   - glob: "content/**"
     required: false

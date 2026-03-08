@@ -7,13 +7,35 @@
     [Parameter(Mandatory = $true)]
     [string]$Summary,
     [string]$RollbackHint = "manual",
-    [string]$ChangesFile = "content/memory/changes.md"
+    [string]$ChangesFile = ""
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $selfwareRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+
+# Auto-detect log file based on paths if not explicitly set
+if ([string]::IsNullOrEmpty($ChangesFile)) {
+    $isData = $false
+    $isSoftware = $false
+    foreach ($p in $Paths) {
+        if ($p -like "content/*" -and $p -ne "content/memory/software-changes.md") {
+            $isData = $true
+        } else {
+            $isSoftware = $true
+        }
+    }
+    if ($isData -and $isSoftware) {
+        $ChangesFile = "content/memory/software-changes.md"
+        Write-Warning "Mixed data+software paths. Writing to software log. Consider logging data changes separately."
+    } elseif ($isData) {
+        $ChangesFile = "content/memory/data-changes.md"
+    } else {
+        $ChangesFile = "content/memory/software-changes.md"
+    }
+}
+
 if (-not [System.IO.Path]::IsPathRooted($ChangesFile)) {
     $ChangesFile = Join-Path $selfwareRoot $ChangesFile
 }

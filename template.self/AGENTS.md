@@ -23,7 +23,8 @@ Full definition: `selfware.md` (EN) / `selfware-zh.md` (ZH).
 selfware.md / selfware-zh.md   ← Protocol authority (philosophy + principles)
 manifest.md                     ← Instance manifest (canonical scope, pack plan)
 content/                        ← Canonical data scope (agent writable)
-  memory/changes.md             ← Change audit log (append-only)
+  memory/data-changes.md        ← Data change log (append-only)
+  memory/software-changes.md    ← Software change log (append-only)
 process/
   tasks/                        ← Task records (require discussion)
   decisions/                    ← Decision records (require discussion)
@@ -42,7 +43,8 @@ entrypoint/                     ← Human-agent interaction surfaces (require di
 | Scope | Permission | Notes |
 |-------|-----------|-------|
 | `content/**` | **writable** | Canonical data scope |
-| `content/memory/changes.md` | **appendable** | MUST append a Change Record for every material change |
+| `content/memory/data-changes.md` | **appendable** | Data changes (under content/) |
+| `content/memory/software-changes.md` | **appendable** | Software changes (specs/runtime/governance etc.) |
 | `process/runs/**` | **writable** | Agent-generated run logs |
 | `process/tasks/**`, `process/decisions/**` | require discussion | Must align with human intent |
 | `selfware*.md`, `governance/**`, `entrypoint/**`, `runtime/**` | require discussion | High-impact files |
@@ -54,14 +56,14 @@ entrypoint/                     ← Human-agent interaction surfaces (require di
 
 ### Modifying user data
 1. Write to target file under `content/`
-2. Append a Change Record to `content/memory/changes.md` (format: `specs/memory.md`)
+2. Append a Change Record to `content/memory/data-changes.md` (format: `specs/memory.md`)
 3. Ensure rollbackability (git commit if available)
 
 ### Developing features / fixing bugs
 1. Read `docs/goal.txt` — verify alignment with current goal
 2. Create task record in `process/tasks/` (requires discussion)
 3. Implement changes within write boundaries
-4. Append Change Record
+4. Append Change Record to `content/memory/software-changes.md`
 5. Record key decisions in `process/decisions/`
 
 ### Initializing the environment

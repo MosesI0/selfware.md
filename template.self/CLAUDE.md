@@ -23,7 +23,8 @@ All agents operating in this instance MUST follow:
 selfware-zh.md / selfware.md   ← 协议权威（哲学+原则，require_discussion）
 manifest.md                     ← 实例清单（canonical scope, pack plan）
 content/                        ← 用户数据写入范围（agent_write: allow）
-  memory/changes.md             ← 变更审计日志（append-only, agent_write: allow）
+  memory/data-changes.md        ← 数据变更日志��append-only）
+  memory/software-changes.md    ← 软件变更日志（append-only）
 process/
   tasks/                        ← 任务记录（require_discussion）
   decisions/                    ← 决策记录（require_discussion）
@@ -42,7 +43,8 @@ entrypoint/                     ← 人机交互入口（require_discussion）
 | 范围 | 权限 | 说明 |
 |------|------|------|
 | `content/**` | **可直接写** | 用户数据和记忆，canonical data scope |
-| `content/memory/changes.md` | **可直接追加** | 每次 material change 必须写 Change Record |
+| `content/memory/data-changes.md` | **可直接追加** | 数据变更（content/ 下）必须记录 |
+| `content/memory/software-changes.md` | **可直接追加** | 软件变更（specs/runtime/governance 等）必须记录 |
 | `process/runs/**` | **可直接写** | 运行日志 |
 | `process/tasks/**`, `process/decisions/**` | 需讨论 | 任务和决策需人类对齐 |
 | `selfware*.md`, `governance/**`, `entrypoint/**`, `runtime/**` | 需讨论 | 高影响文件 |
@@ -54,14 +56,14 @@ entrypoint/                     ← 人机交互入口（require_discussion）
 
 ### 修改用户数据
 1. 写入 `content/` 下的目标文件
-2. 追加 Change Record 到 `content/memory/changes.md`（格式见 `specs/memory.md`）
+2. 追加 Change Record 到 `content/memory/data-changes.md`（格式见 `specs/memory.md`）
 3. 如有 git，确保变更可回滚
 
 ### 开发新功能 / 修 Bug
 1. 读 `docs/goal.txt` 确认与当前目标一致
 2. 在 `process/tasks/` 创建任务记录（需讨论）
 3. 实施变更，遵守写入边界
-4. 追加 Change Record
+4. 追加 Change Record 到 `content/memory/software-changes.md`
 5. 关键决策写入 `process/decisions/`
 
 ### 初始化环境
