@@ -52,6 +52,21 @@ entrypoint/                     ← Human-agent interaction surfaces (require di
 
 ---
 
+## Agent Responsibility Principles
+
+### Compatibility Adaptation
+When an Agent receives a `.self` file that the current environment does not fully support (missing dependencies, runtime version mismatch, etc.), it MUST **proactively adapt on first run**: install missing dependencies, adjust configuration, and complete runtime scripts to make it runnable. The user is only responsible for their own environment and requirements — the Agent bridges the gap.
+
+### Requirement Conflict Management
+On every new requirement, the Agent MUST search existing decisions in `process/decisions/` first:
+- **No conflict** → Record the new requirement as a decision in `process/decisions/`
+- **Conflict found** → MUST NOT silently override. Instead:
+  1. Explicitly flag the conflict to the user
+  2. Guide the user to confirm and refine the requirement
+  3. Design a coexistence solution for both requirements, rather than simply replacing one
+
+---
+
 ## Core Workflows
 
 ### Modifying user data
